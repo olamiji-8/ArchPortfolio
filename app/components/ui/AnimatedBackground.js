@@ -3,6 +3,10 @@ import { motion } from 'framer-motion'
 
 export default function AnimatedBackground() {
   const particles = Array.from({ length: 50 }, (_, i) => i)
+  
+  // Safe window dimensions with fallbacks
+  const getWindowWidth = () => (typeof window !== 'undefined' ? window.innerWidth : 1920)
+  const getWindowHeight = () => (typeof window !== 'undefined' ? window.innerHeight : 1080)
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -15,12 +19,12 @@ export default function AnimatedBackground() {
           key={particle}
           className="absolute w-1 h-1 bg-anime-cyan rounded-full opacity-60"
           initial={{
-            x: Math.random() * window?.innerWidth || 1920,
-            y: Math.random() * window?.innerHeight || 1080,
+            x: Math.random() * getWindowWidth(),
+            y: Math.random() * getWindowHeight(),
           }}
           animate={{
-            x: Math.random() * (window?.innerWidth || 1920),
-            y: Math.random() * (window?.innerHeight || 1080),
+            x: Math.random() * getWindowWidth(),
+            y: Math.random() * getWindowHeight(),
           }}
           transition={{
             duration: Math.random() * 20 + 10,
