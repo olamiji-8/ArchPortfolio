@@ -1,6 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Users, Target, Lightbulb, Award, Calendar, MapPin } from 'lucide-react';
+import { Users, Target, Lightbulb, Award, Calendar, MapPin, Play } from 'lucide-react';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+
 
 export default function AboutPage() {
   const [mounted, setMounted] = useState(false);
@@ -112,29 +115,131 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-cyan-500/10" />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-4xl mx-auto opacity-0 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              About NekoArch
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Where architectural dreams meet anime imagination
-            </p>
-            <div className="flex items-center justify-center gap-8 text-gray-400 flex-wrap">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                <span>Est. 2016</span>
+      <Header/>
+      
+      {/* Architectural Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background architectural images with parallax effect */}
+        <div className="absolute inset-0">
+          {/* Main hero image */}
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-950/30 to-gray-950 z-10" />
+          <img 
+            src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80" 
+            alt="Modern Architecture" 
+            className="w-full h-full object-cover opacity-60"
+          />
+          
+          {/* Floating architectural elements */}
+          <div className="absolute top-20 left-20 w-32 h-32 opacity-20 animate-float">
+            <img 
+              src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+              alt="Architecture Detail" 
+              className="w-full h-full object-cover rounded-xl border border-cyan-500/30"
+            />
+          </div>
+          
+          <div className="absolute bottom-32 right-20 w-40 h-40 opacity-25 animate-float-delayed">
+            <img 
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+              alt="Modern Building" 
+              className="w-full h-full object-cover rounded-xl border border-purple-500/30"
+            />
+          </div>
+          
+          <div className="absolute top-1/2 right-10 w-24 h-24 opacity-30 animate-pulse">
+            <img 
+              src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+              alt="Glass Architecture" 
+              className="w-full h-full object-cover rounded-full border border-pink-500/40"
+            />
+          </div>
+        </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-20 text-center max-w-5xl mx-auto px-6">
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-fade-in-up">
+            Where Dreams
+            <br />
+            <span className="text-5xl md:text-7xl">Take Shape</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto animate-fade-in-up-delayed">
+            Architecture inspired by anime aesthetics, designed for the future
+          </p>
+          
+          {/* Stats */}
+          <div className="flex items-center justify-center gap-12 text-gray-400 flex-wrap mb-12">
+            <div className="text-center animate-fade-in-up-delayed-2">
+              <div className="text-3xl font-bold text-cyan-400 mb-1">150+</div>
+              <div className="text-sm">Projects Completed</div>
+            </div>
+            <div className="text-center animate-fade-in-up-delayed-2">
+              <div className="text-3xl font-bold text-purple-400 mb-1">25+</div>
+              <div className="text-sm">Awards Won</div>
+            </div>
+            <div className="text-center animate-fade-in-up-delayed-2">
+              <div className="text-3xl font-bold text-pink-400 mb-1">8</div>
+              <div className="text-sm">Years Experience</div>
+            </div>
+          </div>
+          
+          {/* CTA Button */}
+          <button className="group bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 animate-fade-in-up-delayed-3">
+            <span className="flex items-center gap-2">
+              Explore Our Work
+              <Play className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </button>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-gradient-to-b from-purple-400 to-cyan-400 rounded-full mt-2 animate-pulse" />
+          </div>
+        </div>
+      </section>
+
+      {/* Secondary Hero Images Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-950 to-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Minimalist Design" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-xl font-bold mb-2">Minimalist Beauty</h3>
+                <p className="text-sm text-gray-200">Clean lines meet functional design</p>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
-                <span>Tokyo, Japan</span>
+            </div>
+            
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Glass Architecture" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-xl font-bold mb-2">Transparent Innovation</h3>
+                <p className="text-sm text-gray-200">Light and space in harmony</p>
               </div>
-              <div className="flex items-center gap-2">
-                <Award className="w-5 h-5" />
-                <span>25+ Awards</span>
+            </div>
+            
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80" 
+                alt="Modern Curves" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-pink-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-xl font-bold mb-2">Fluid Forms</h3>
+                <p className="text-sm text-gray-200">Where curves tell stories</p>
               </div>
             </div>
           </div>
@@ -257,14 +362,56 @@ export default function AboutPage() {
       </section>
 
       <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes fade-in-up {
+          from { 
+            opacity: 0; 
+            transform: translateY(30px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
         }
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out forwards;
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-15px) rotate(-2deg); }
+        }
+        
+        .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out forwards;
+        }
+        
+        .animate-fade-in-up-delayed {
+          animation: fade-in-up 1s ease-out 0.3s forwards;
+          opacity: 0;
+        }
+        
+        .animate-fade-in-up-delayed-2 {
+          animation: fade-in-up 1s ease-out 0.6s forwards;
+          opacity: 0;
+        }
+        
+        .animate-fade-in-up-delayed-3 {
+          animation: fade-in-up 1s ease-out 0.9s forwards;
+          opacity: 0;
+        }
+        
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed {
+          animation: float-delayed 8s ease-in-out infinite;
         }
       `}</style>
+
+      <Footer/>
     </div>
   );
 }
